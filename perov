@@ -1,0 +1,127 @@
+import time
+
+
+print("Привет игроки! ")
+time.sleep(2)
+print("Игрок X , введите ваше имя:")
+player_1=input()
+time.sleep(1)
+print("Игрок 0 , введите ваше имя:")
+player_2=input()
+time.sleep(1)
+print(" Let's get ready to rummble! ")
+
+print(player_1, "и", player_2 , " ознакомьтесь с индексами клеток игрого поля")
+
+print("\n")
+print(  "1"   ,  "|" , "2","|",  "3" )
+print(  "4"   ,  "|" , "5","|",  "6" )
+print(  "7"   ,  "|" , "8","|",  "9" )
+
+print("\n")
+
+time.sleep(4)
+
+print("Все ли понятно ? Введите Да или Нет")
+answer=input()
+if answer =="ДА" or answer=="да" or answer=="Да" or answer=="дА":
+    print("Игра Началась !")
+else:
+    print("10 раз повторять не буду ! Играем ")
+
+
+
+
+time.sleep(2)
+
+pole=[ " "  for x in range (10) ]
+
+def printpole():
+        print("\n")
+        print("   |   |   ")
+        print(" " + pole[1] + " | " + pole[2] + " | " + pole[3] + "  ")
+        print("   |   |")
+        print("---|---|---")
+        print("   |   |")
+        print(" " + pole[4] + " | " + pole[5] + " | " + pole[6] + "  ")
+        print("   |   |")
+        print("---|---|---")
+        print("   |   |")
+        print(" " + pole[7] + " | " + pole[8] + " | " + pole[9] + "  ")
+        print("   |   |   ")
+        print("\n")
+
+
+while True:
+
+
+    printpole()
+    print(player_1, " выбери клетку от 1 до 9 ")
+    choice=input( " Ход  X   :").upper()
+    choice=int(choice)
+    if pole[choice] == " ":
+        pole[choice] = "X"
+    else:
+        print(player_1, "ты промазал, клетка занята !")
+        time.sleep(1)
+
+
+    if (pole[1] == "X" and pole[2] == "X" and pole[3] == "X") or \
+    (pole[4] == "X" and pole[5] == "X" and pole[6] == "X") or \
+    (pole[7] == "X" and pole[8] == "X" and pole[9] == "X") or \
+    (pole[1] == "X" and pole[4] == "X" and pole[7] == "X") or \
+    (pole[2] == "X" and pole[5] == "X" and pole[8] == "X") or \
+    (pole[3] == "X" and pole[6] == "X" and pole[9] == "X") or \
+    (pole[1] == "X" and pole[5] == "X" and pole[9] == "X") or \
+    (pole[3] == "X" and pole[5] == "X" and pole[7] == "X"):
+
+        printpole()
+        print(player_1, " одержал победу ! Ура !")
+        break
+
+    printpole()
+
+    draw=True
+    for index in range(1,10):
+        if pole[index] == " ":
+            draw=False
+            break
+
+
+    if draw == True:
+        print("Стоп Игра! Ничья...")
+        break
+
+
+    print(player_2," выбери клетку от 1 до 9")
+    choice=input( " Ход 0 :").upper()
+    choice=int(choice)
+    if pole[choice] == " ":
+        pole[choice] = "0"
+    else:
+        print(player_2, "ты промазал, клетка занята !")
+        time.sleep(1)
+
+    if (pole[1] == "0" and pole[2] == "0" and pole[3]== "0") or \
+    (pole[4] == "0" and pole[5] == "0" and pole[6] == "0") or \
+    (pole[7] == "0" and pole[8] == "0" and pole[9] == "0") or \
+    (pole[1] == "0" and pole[4] == "0" and pole[7] == "0") or \
+    (pole[2] == "0" and pole[5] == "0" and pole[8] == "0") or \
+    (pole[3] == "0" and pole[6] == "0" and pole[9] == "0") or \
+    (pole[1] == "0" and pole[5] == "0" and pole[9] == "0") or \
+    (pole[3] == "0" and pole[5] == "0" and pole[7] == "0"):
+
+        printpole()
+        print(player_2, " выиграл! Ура!")
+        break
+
+    draw = True
+    for index in range(1,10):
+        if pole[index] == " ":
+         draw=False
+         break
+    if draw == True:
+        print("Стоп! Ничья!")
+        break
+
+
